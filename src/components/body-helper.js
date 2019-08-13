@@ -33,11 +33,14 @@ AFRAME.registerComponent("body-helper", {
 
   init: function() {
     this.system = this.el.sceneEl.systems["hubs-systems"].physicsSystem;
+    console.log("BodyHelper.init", this.el.id, this);
     this.system.registerBodyHelper(this);
   },
 
   init2: function() {
+    console.log("BodyHelper.init2a", this.el.id, this);
     this.body = new Body(this.data, this.el.object3D, this.system.world);
+    console.log("BodyHelper.init2b", this.el.id, this.body, this);
     this.system.addBody(this.body);
   },
 
@@ -49,6 +52,7 @@ AFRAME.registerComponent("body-helper", {
 
   remove: function() {
     if (this.body) {
+      console.log("BodyHelper.remove", this.el.id, this);
       this.system.removeBody(this.body);
       this.body.destroy();
       this.body = null;

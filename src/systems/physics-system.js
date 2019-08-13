@@ -32,9 +32,11 @@ export class PhysicsSystem {
       this.world = new World(WORLD_CONFIG);
 
       for (const bodyHelper of this.bodyHelpers) {
+        console.log("Ammo ready", bodyHelper.el.id, bodyHelper.isPlaying, bodyHelper);
         if (bodyHelper.isPlaying) bodyHelper.init2();
       }
       for (const shapeHelper of this.shapeHelpers) {
+        console.log("Ammo ready", shapeHelper.el.id, shapeHelper.isPlaying, shapeHelper);
         if (shapeHelper.isPlaying) shapeHelper.init2();
       }
       this.shapeHelpers.length = 0;
@@ -89,6 +91,7 @@ export class PhysicsSystem {
     if (this.world) {
       bodyHelper.init2();
     } else {
+      console.log("registerBodyHelper", bodyHelper.el.id, bodyHelper);
       this.bodyHelpers.push(bodyHelper);
     }
   }
@@ -97,6 +100,7 @@ export class PhysicsSystem {
     if (this.world) {
       shapeHelper.init2();
     } else {
+      console.log("registerShapeHelper", shapeHelper.el.id, shapeHelper);
       this.shapeHelpers.push(shapeHelper);
     }
   }
