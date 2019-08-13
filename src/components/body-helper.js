@@ -33,6 +33,7 @@ AFRAME.registerComponent("body-helper", {
 
   init: function() {
     this.system = this.el.sceneEl.systems["hubs-systems"].physicsSystem;
+    this.ready = true;
     console.log("BodyHelper.init", this.el.id, this);
     this.system.registerBodyHelper(this);
   },
@@ -57,5 +58,6 @@ AFRAME.registerComponent("body-helper", {
       this.body.destroy();
       this.body = null;
     }
+    this.ready = false;
   }
 });
